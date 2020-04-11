@@ -1,21 +1,17 @@
-function buildChart(chart){
+function buildCharts(chart){
+    // Read json data
     d3.json("data/samples.json").then((data) => {
     var chartSample = data.samples;
     var resultArray = chartSample.filter(object => object.id===chart);
     var result = resultArray[0];
-    // Sort the array in ascending order using an arrow function (ERROR: result.sort is not a function at app.js:7)
-    // var sortedDescending = result.sort(function sortFunction(a, b) {
-    //     return b - a;
-    // });
-    // // Slice the first 10 elements of the sortedDescendingarray, assign to a variable
-    // var sampleValues = result.slice(0, 10);
-    // var sampleValues = result.sample_vaules.slice(0,10).reverse();
-    // var sampleValues = result.sample_vaules.sort((a, b) => b - a);;
-    // var sampleValues = sortedValues.slice(0, 10);
+        
+    // Create chart value variables
     var sampleValues = result.sample_vaules;
     var otuID = result.otu_ids;
     var otuLabel = result.otu_labels;
 
+    // Build Bar Chart
+    // ***SORT SAMPLE VALUES IN DESCENDING ORDER***
     var barData = [{
         x: sampleValues,
         y: otuID.slice(0,10).map(otuID => `OTU ${otuID}`).reverse(),
@@ -38,41 +34,42 @@ function buildChart(chart){
         height: 390
     }
 
-    Plotly.newPlot("bar",barData,barLayout)
-    });
-}
+    // Render the plot to the div tag with id "bar"
+    Plotly.newPlot("bar",barData,barLayout);
 
-function buildBubChart(bubChart){
-    d3.json("data/samples.json").then((data) => {
-    var bubChartSample = data.samples;
-    var bubResultArray = bubChartSample.filter(object => object.id===bubChart);
-    var bubResult = bubResultArray[0];
-    var bubSampleValues = bubResult.sample_vaules;
-    var bubOtuID = bubResult.otu_ids;
-    var bubOtuLabel = bubResult.otu_labels;
-
-    var bubData = [{
-        x: bubOtuID,
-        y: bubSampleValues,
+    // Build Bubble Chart
+    var bubbleData = [{
+        x: otuID,
+        y: sampleValues,
+        text: otuLabel,
         mode: "markers",
-        text: bubOtuLabel,
         marker: {
-            color: bubOtuID,
-            size: bubSampleValues
+            size: sampleValues,
+            color: otuID,
+            colorscale: "Earth"
         }
     }];
 
-    var bubLayout = {
+    var bubbleLayout = {
         yaxis: { automargin: true },
         xaxis: {title: "OTU ID"},
+        hovermode: "closest",
+        margin: {
+            l: 75,
+            r: 50,
+            b: 50,
+            t: 50,
+            pad: 4
+        }
     };
 
-    Plotly.newPlot("bubble",bubData,bubLayout);
-
+    // Render the plot to the div tag with id "bubble"
+    Plotly.newPlot("bubble",bubbleData,bubbleLayout);
     });
 }
 
 function init(){ 
+    // Orient json "name" key with html <div> id "#selDataset"
     var name = d3.select("#selDataset");
 
     d3.json("data/samples.json").then((data) => {
@@ -86,21 +83,22 @@ function init(){
         });
 
         var firstSample = sampleNames[0];
-        mData(firstSample);
-        
-        buildChart(firstSample);
+        metaData(firstSample);
+        buildCharts(firstSample);
 
         console.log(data);
     });
 }
 
-function mData(sample){
+function metaData(sample){
     d3.json("data/samples.json").then((data) => {
         var metaData = data.metadata;
         var resultArray = metaData.filter(object => object.id==sample);
         var result = resultArray[0];
         var sampleData = d3.select("#sample-metadata");
         sampleData.html("");
+
+        // Use `Object.entries` to add each key and value pair to the panel
         Object.entries(result).forEach(([key, value]) => {
             sampleData.append("h6").text(`${key.toUpperCase()}: ${value}`);
         });
@@ -110,7 +108,6 @@ function mData(sample){
 init()
 
 function optionChanged(sample){
-    mData(sample);
-    buildChart(sample);
+    metaData(sample);
+    buildCharts(sample);
 }
-
