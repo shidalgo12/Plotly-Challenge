@@ -6,16 +6,16 @@ function buildCharts(chart){
     var result = resultArray[0];
         
     // Create chart value variables
-    var sampleValues = result.sample_vaules;
+    var sampleValues = result.sample_values;
     var otuID = result.otu_ids;
     var otuLabel = result.otu_labels;
 
     // Build Bar Chart
-    // ***SORT SAMPLE VALUES IN DESCENDING ORDER***
+    
     var barData = [{
-        x: sampleValues,
+        x: sampleValues.slice(0, 10).reverse(),
         y: otuID.slice(0,10).map(otuID => `OTU ${otuID}`).reverse(),
-        text: otuLabel.slice(0,10).reverse(),
+        text: otuLabel.slice(0, 10).reverse(),
         type: "bar",
         orientation: "h"
     }];
