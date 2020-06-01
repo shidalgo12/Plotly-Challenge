@@ -14,7 +14,7 @@ A D3, JavaScript library was used to read and visualize data sourced through a .
 
 An html dropdown menu was developed to hold a list of Subject IDs and resopnsively adjust chart values upon selection. 
 
-![](Image/DropDown.png)
+![](Images/DropDown.png)
  
 ### Bar Chart
 Visualized data was sorted and sliced in JavaScript coding to sort values in decsending order and solely display the top 10 OTUs found for a specific Subject ID. Hovertext was added to bars to provide the OTU_Labels.  Chart layout coding was used to add a title and set the size of the chart.  Lastly, all Bar Chart data was rendered into a correlated div tag in the .html file to be displayed in the localhost. 
