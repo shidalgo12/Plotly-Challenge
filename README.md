@@ -1,4 +1,4 @@
-# Plotly Visualization
+# Plotly Visualizations
 
 ## Background
 
@@ -8,11 +8,11 @@ The dataset reveals that a small handful of microbial species (also called opera
 
 ### Read Data via D3
 
-A D3, JavaScript library was used to read and visualize data sourced through a .json file and interactively displayed in an .html file.  Value variables were created and inserted into plotting codes to build a bar and bubble chart.
+A D3, JavaScript library was used to read and visualize multiple arrays of data sourced through a .json file and interactively displayed in an .html file.  Value variables were created and inserted into plotting codes to build a bar and bubble chart.
 
-### Interactive Dropdown Menu
+### Interactive Dropdown Menu and Data Panel
 
-An html dropdown menu was developed to hold a list of Subject IDs and resopnsively adjust chart values upon selection. 
+An html dropdown menu was developed to hold a list of Subject IDs and resopnsively adjust chart values upon selection.  A separate data array was read to pull the selected patient's demographic information and rendered into an html div tag.
 
 ![](Images/DropDown.png)
  
@@ -23,7 +23,7 @@ Visualized data was sorted and sliced in JavaScript coding to sort values in dec
 
 
 ### Bubble Chart
-Chart values variables created to establish X & Y values (x: otu_ids, y: sample_values).  Sample_values reflected in size and otu_ids marked by color.  Otu_labels addes as hovertext. values setLastly, all Bar Chart data was rendered into a correlated div tag in the .html file to be displayed in the localhost.
+Chart values variables used to establish X & Y values (x: otu_ids, y: sample_values).  Sample_value totals reflected in size and otu_ids marked by color.  Otu_labels added as hovertext. All Bar Chart data again rendered into a correlated div tag in the .html file to be displayed in the localhost.
 
 ![](Images/PlotlyBubbleChart.png)
 
