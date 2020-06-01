@@ -12,35 +12,25 @@ A D3, JavaScript library was used to read and visualize data sourced through a .
 
 ### Interactive Dropdown Menu
 
-An html dropdown menu was developed to hold a list of Subject IDs and resopnsively adjust chart values upon selection.  
+An html dropdown menu was developed to hold a list of Subject IDs and resopnsively adjust chart values upon selection. 
+
+![](Image/DropDown.png)
  
 ### Bar Chart
-Visualized data was sorted and sliced in JavaScript coding to sort values in decsending order and solely display the top 10 OTUs found for a specific individual. Hovertext was added to bars to provide the OTU_Labels.  Chart layout coding was used to add a title and set the size of the chart.  Lastly, all Bar Chart data was rendered into a correlated div tag in the .html file to be displayed in the localhost. 
+Visualized data was sorted and sliced in JavaScript coding to sort values in decsending order and solely display the top 10 OTUs found for a specific Subject ID. Hovertext was added to bars to provide the OTU_Labels.  Chart layout coding was used to add a title and set the size of the chart.  Lastly, all Bar Chart data was rendered into a correlated div tag in the .html file to be displayed in the localhost. 
 
 ![](Images/PlotlyBar.png)
 
 
 ### Bubble Chart
-
+Chart values variables created to establish X & Y values (x: otu_ids, y: sample_values).  Sample_values reflected in size and otu_ids marked by color.  Otu_labels addes as hovertext. values setLastly, all Bar Chart data was rendered into a correlated div tag in the .html file to be displayed in the localhost.
 
 ![](Images/PlotlyBubbleChart.png)
 
 
 
 
-Use otu_ids for the x values.
 
-
-Use sample_values for the y values.
-
-
-Use sample_values for the marker size.
-
-
-Use otu_ids for the marker colors.
-
-
-Use otu_labels for the text values.
 
 
 Display the sample metadata, i.e., an individual's demographic information.
