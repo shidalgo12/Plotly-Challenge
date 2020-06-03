@@ -21,6 +21,6 @@ Visualized data was sorted and sliced in JavaScript coding to sort values in des
 
 ### Bubble Chart
 
-Chart values variables used to establish X & Y values (x: otu_ids, y: sample_values).  Sample value totals reflected in size and otu_ids marked by color.  Otu_labels added as hover text.  All Bar Chart data again rendered into a correlated div tag in the .html file to be displayed in the localhost.
+Chart value variables used to establish X & Y values (x: otu_ids, y: sample_values).  Sample value totals reflected in size and otu_ids marked by color.  Otu_labels added as hover text.  All Bar Chart data again rendered into a correlated div tag in the .html file to be displayed in the localhost.
 
 ![](Images/PlotlyBubbleChart.png)
